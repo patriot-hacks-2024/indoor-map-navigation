@@ -1,68 +1,58 @@
-const fs = require("fs");
-const sdk = require("microsoft-cognitiveservices-speech-sdk");
+// speechRecognition.js
 
-const apiKey = process.env.AZURE_STT_API_KEY || "<api key>";
-const region = process.env.AZURE_STT_REGION || "<region>";
+// Load the .env file if it exists
+const dotenv = require("dotenv");
+dotenv.config();
 
-console.log(apiKey, region)
+// status fields and start button in UI
+var phraseDiv;
+var startRecognizeOnceAsyncButton;
 
-const speechConfig = sdk.SpeechConfig.fromSubscription(process.env.AZURE_STT_API_KEY, process.env.AZURE_STT_REGION);
-speechConfig.speechRecognitionLanguage = "en-US";
+// 하드코딩된 subscription key와 region
+const subscriptionKey = process.env.AZURE_STT_API_KEY || "<api key>";
+const serviceRegion = process.env.AZURE_STT_REGION || "<region>";
+const endpoint = process.env.AZURE_STT_ENDPOINT || "<endpoint>";
+var SpeechSDK;
+var recognizer;
 
-// function fromFile() {
-//     let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
-//     let speechRecognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+document.addEventListener("DOMContentLoaded", function () {
+  startRecognizeOnceAsyncButton = document.getElementById("startRecognizeOnceAsyncButton");
+  phraseDiv = document.getElementById("phraseDiv");
 
-//     speechRecognizer.recognizeOnceAsync(result => {
-//         switch (result.reason) {
-//             case sdk.ResultReason.RecognizedSpeech:
-//                 console.log(`RECOGNIZED: Text=${result.text}`);
-//                 break;
-//             case sdk.ResultReason.NoMatch:
-//                 console.log("NOMATCH: Speech could not be recognized.");
-//                 break;
-//             case sdk.ResultReason.Canceled:
-//                 const cancellation = sdk.CancellationDetails.fromResult(result);
-//                 console.log(`CANCELED: Reason=${cancellation.reason}`);
+  startRecognizeOnceAsyncButton.addEventListener("click", function () {
+    startRecognizeOnceAsyncButton.disabled = true;
+    phraseDiv.innerHTML = "";
 
-//                 if (cancellation.reason == sdk.CancellationReason.Error) {
-//                     console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
-//                     console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
-//                     console.log("CANCELED: Did you set the speech resource key and region values?");
-//                 }
-//                 break;
-//         }
-//         speechRecognizer.close();
-//     });
-// }
+    var speechConfig = SpeechSDK.SpeechConfig.fromSubscription(subscriptionKey, serviceRegion);
 
-function fromMicrophone() {
-    let audioConfig = sdk.AudioConfig.fromDefaultMicrophoneInput();
-    let speechRecognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+    speechConfig.speechRecognitionLanguage = "en-US";
+    var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+    recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig);
 
-    speechRecognizer.recognizeOnceAsync(result => {
-        switch (result.reason) {
-            case sdk.ResultReason.RecognizedSpeech:
-                console.log(`RECOGNIZED: Text=${result.text}`);
-                break;
-            case sdk.ResultReason.NoMatch:
-                console.log("NOMATCH: Speech could not be recognized.");
-                break;
-            case sdk.ResultReason.Canceled:
-                const cancellation = sdk.CancellationDetails.fromResult(result);
-                console.log(`CANCELED: Reason=${cancellation.reason}`);
+    recognizer.recognizeOnceAsync(
+      function (result) {
+        startRecognizeOnceAsyncButton.disabled = false;
+        phraseDiv.innerHTML += result.text;
+        window.console.log(result);
 
-                if (cancellation.reason == sdk.CancellationReason.Error) {
-                    console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
-                    console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
-                    console.log("CANCELED: Did you set the speech resource key and region values?");
-                }
-                break;
-        }
-        speechRecognizer.close();
-    });
-}
+        recognizer.close();
+        recognizer = undefined;
+      },
+      function (err) {
+        startRecognizeOnceAsyncButton.disabled = false;
+        phraseDiv.innerHTML += err;
+        window.console.log(err);
 
-fromMicrophone();
+        recognizer.close();
+        recognizer = undefined;
+      });
+  });
 
-// fromFile();
+  if (!!window.SpeechSDK) {
+    SpeechSDK = window.SpeechSDK;
+    startRecognizeOnceAsyncButton.disabled = false;
+
+    document.getElementById('content').style.display = 'block';
+    document.getElementById('warning').style.display = 'none';
+  }
+});
