@@ -1,17 +1,16 @@
 // speechRecognition.js
 
 // Load the .env file if it exists
-const dotenv = require("dotenv");
-dotenv.config();
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 // status fields and start button in UI
 var phraseDiv;
 var startRecognizeOnceAsyncButton;
 
-// 하드코딩된 subscription key와 region
-const subscriptionKey = process.env.AZURE_STT_API_KEY || "<api key>";
-const serviceRegion = process.env.AZURE_STT_REGION || "<region>";
-const endpoint = process.env.AZURE_STT_ENDPOINT || "<endpoint>";
+// const subscriptionKey = process.env.AZURE_STT_API_KEY || "<api key>";
+// const serviceRegion = process.env.AZURE_STT_REGION || "<region>";
+// const endpoint = process.env.AZURE_STT_ENDPOINT || "<endpoint>";
 var SpeechSDK;
 var recognizer;
 
