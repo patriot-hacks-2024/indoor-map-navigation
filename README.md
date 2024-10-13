@@ -28,6 +28,6 @@ Room Scheduling: Admins can manage room availability and activities.
 
 ## What's Next
 
-Integration with building control systems (e.g., air conditioning, lighting)
-Real-time mobile app for easier navigation
-Admin log-in for managing rooms and schedules
+Integration with building control systems (e.g., air conditioning, lighting)  
+Real-time mobile app for easier navigation  
+Admin log-in for managing rooms and schedules  
