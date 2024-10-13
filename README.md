@@ -1,6 +1,8 @@
 # InFuse - Indoor Navigation System for GMU
 
 ## Overview
+  
+![Vedio](https://github.com/user-attachments/assets/1647d567-ce04-46b0-91ea-402a9806e8e6)  
 
 InFuse is an indoor navigation system designed to guide students, faculty, and visitors through George Mason University's new building. It helps users find rooms and navigate multiple floors efficiently, with additional features for room scheduling and admin management.
 
