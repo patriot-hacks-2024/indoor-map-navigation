@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
+/* Full height for the app container */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh; /* Viewport height */
+}
+
+/* Top control (100px height) */
+.top-control {
+  position: relative; /* 为了定位右上角的按钮 */
+  height: 100px;
+  background-color: lightblue;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  font-size: 24px;
+}
+
+/* Right top corner button */
+.toggle-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 100px;
+  height: 40px;
+  background-color: #4CAF50;
   color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+/* Bottom control (300px height) */
+.bottom-control {
+  height: 150px;
+  background-color: lightcoral;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px; /* 为SiriComponent增加一点内边距 */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* SiriComponent will take up all available space */
+.bottom-control > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* Middle section to take up remaining space */
+.middle-section {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Left control (70% width) */
+.left-control {
+  width: 70%;
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Right control (30% width) */
+.right-control {
+  width: 30%;
+  background-color: lightyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.right-control > div {
+  width: 100%;
+  height: 100%;
+}
+
+/* Different background colors for modes */
+.admin-mode .top-control {
+  background-color: lightcyan;
+}
+
+.user-mode .top-control {
+  background-color: lightblue;
 }
