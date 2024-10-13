@@ -19,7 +19,7 @@ function App() {
     const [rooms, setRooms] = useState([
         new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", '1F', [32, 13]),
         new Room("Classroom 201", "A software engineering class", '2F', [42, 10]),
-        new Room("Ballroom 304", "Christmas Ball", '3F', [39, 11]),
+        new Room("Ballroom 304", "Christmas Ball", '3F', [17, 80]),
     ]);
 
     const [startPoint, setStartPoint] = useState(null);
@@ -86,7 +86,7 @@ function App() {
         <div className={`app-container ${isAdminMode ? "admin-mode" : "user-mode"}`}>
             {/* Top 100px Control */}
             <div className="top-control">
-                <span>{isAdminMode ? "Fuse at Mason Square <br /> (Admin Mode)" : "Fuse at Mason Square"}</span>
+                <span>{isAdminMode ? "Fuse at Mason Square (Admin Mode)" : "Fuse at Mason Square"}</span>
                 <button className="toggle-button" onClick={toggleMode}>
                     {isAdminMode ? " " : "  "}
                 </button>

@@ -56,7 +56,6 @@ const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
 // 样式
 const styles = {
     leftControlContainer: {
-        background: "red",
     },
     buttonGroup: {
         padding: 0,

@@ -32,7 +32,7 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStairCallback, r
     }, [targetRoom, refresh]);
 
     return (
-        <canvas ref={canvasRef} width="600" height="300"
+        <canvas ref={canvasRef} width="800" height="400"
                 style={{marginBottom: '10px'}}></canvas>
     )
 };
@@ -42,7 +42,7 @@ const drawGrid = (grid, ctx) => {
     const rows = 50;
     const cols = 100;
 
-    const cellSize = 7; // 每个格子的大小
+    const cellSize = 8; // 每个格子的大小
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             if (grid[i][j] === 8) {
@@ -129,7 +129,7 @@ const drawPath = (path, ctx, callback) => {
             const x = path[index][0];
             const y = path[index][1];
             ctx.fillStyle = 'red'; // 路径为红色
-            ctx.fillRect(y * 5 + 1, x * 5 + 1, 3, 3); // 绘制路径
+            ctx.fillRect(y * 8 + 1, x * 8 + 1, 6, 6); // 绘制路径
             index++;
             setTimeout(step, 21); // 每500毫秒绘制下一个点
         } else {
