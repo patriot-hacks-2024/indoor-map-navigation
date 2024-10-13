@@ -1,21 +1,25 @@
 import {useEffect, useRef} from "react";
+import {stair} from "../data/mapData";
 
-const FloorMap = ({grid, stairs, start, dest, navToOtherFloors, updateSelectedStair}) => {
+const FloorMap = ({name, grid, start, targetRoom, updateSelectedStair, refresh}) => {
     const canvasRef = useRef(null);
+    const stairs = stair;
 
     useEffect(() => {
+        console.log("drawing")
         let ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         drawGrid(grid, ctx);
-        if (navToOtherFloors !== null) {
-            let goals = navToOtherFloors ? stairs : dest;
+        if (targetRoom !== null) {
+            let navToOtherFloors = targetRoom.floor !== name;
+            let goals = navToOtherFloors ? stairs : targetRoom.entrance;
             let path = dijkstra(grid, start, goals);
+            drawPath(path, ctx);
             if (navToOtherFloors) {
                 updateSelectedStair(nextStart);
             }
-            drawPath(path, ctx);
         }
-    }, [grid, stairs, start, dest, navToOtherFloors]);
+    }, [targetRoom, refresh]);
 
     return (
         <canvas ref={canvasRef} width="600" height="300"
@@ -57,6 +61,9 @@ const drawGrid = (grid, ctx) => {
 let nextStart = []
 
 const dijkstra = (grid, start, goal) => {
+    start=[start[0], start[1]]
+    console.log("dijk", start);
+
     if (goal === null || goal.length === 0) {
         return [];
     }
@@ -69,7 +76,8 @@ const dijkstra = (grid, start, goal) => {
     while (queue.length > 0) {
         queue.sort((a, b) => a.cost - b.cost); // 按成本升序排序
         const {cost, position, path} = queue.shift();
-        const [x, y] = position;
+        const x = position[0];
+        const y = position[1];
 
         for (let i = 0; i < goal.length; i++) {
             if (position[0] === goal[i][0] && position[1] === goal[i][1]) {
@@ -98,12 +106,15 @@ const dijkstra = (grid, start, goal) => {
 };
 
 const drawPath = (path, ctx) => {
+    console.log(path);
+
     let index = 0;
 
     // 定义逐步绘制的函数
     const step = () => {
         if (index < path.length) {
-            const [x, y] = path[index];
+            const x = path[index][0];
+            const y = path[index][1];
             ctx.fillStyle = 'red'; // 路径为红色
             ctx.fillRect(y * 5 + 1, x * 5 + 1, 3, 3); // 绘制路径
             index++;

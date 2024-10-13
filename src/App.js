@@ -5,7 +5,7 @@ import Room from "./types/Room";
 import RoomList from "./components/RoomList";
 import {textToAdminCommand, textToUserCommand} from "./chat/textToCommand";
 import FloorMap from "./components/FloorMap";
-import {grid1, grid2, grid3, stair, start1} from "./data/mapData";
+import {grid1, grid2, grid3, start1} from "./data/mapData";
 import LeftControl from "./components/LeftControl";
 
 function App() {
@@ -17,34 +17,24 @@ function App() {
 
     // Initialize state with an array of Room objects
     const [rooms, setRooms] = useState([
-        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", 1, [1, 2]),
-        new Room("Classroom 101", "A software engineering class", 2, [3, 4]),
+        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", '1F', [32, 13]),
+        new Room("Classroom 201", "A software engineering class", '2F', [42, 10]),
+        new Room("Ballroom 304", "Christmas Ball", '3F', [39, 11]),
     ]);
 
     const [startPoint, setStartPoint] = useState(null);
 
+    const setStartPointVerbose = (val) => {
+        console.log("setStartPointVerbose", val);
+        setStartPoint({...val});
+    }
+
     const [targetRoom, setTargetRoom] = useState(null);
 
-    const floors = [
-        {
-            name: "1F",
-            floor: <FloorMap grid={grid1} dest={targetRoom?.entrance ?? null} stairs={stair}
-                             navToOtherFloors={targetRoom?.floor === "1F" ?? null} start={start1}
-                             updateSelectedStair={setStartPoint}/>
-        },
-        {
-            name: "2F",
-            floor: <FloorMap grid={grid2} dest={targetRoom?.entrance ?? null} stairs={stair}
-                             navToOtherFloors={targetRoom?.floor === "2F" ?? null} start={startPoint}
-                             updateSelectedStair={setStartPoint}/>
-        },
-        {
-            name: "3F",
-            floor: <FloorMap grid={grid3} dest={targetRoom?.entrance ?? null} stairs={stair}
-                             navToOtherFloors={targetRoom?.floor === "3F" ?? null} start={startPoint}
-                             updateSelectedStair={setStartPoint}/>
-        },
-    ]
+    const setTargetRoomVerbose = (val) => {
+        console.log("setTargetRoomVerbose", val);
+        setTargetRoom({...val});
+    }
 
     // Function to edit a specific room
     const updateOccupation = (name, newOccupation) => {
@@ -62,7 +52,7 @@ function App() {
         for (let r of rooms) {
             if (r.name === room) {
                 entrance = r.entrance;
-                setTargetRoom(r);
+                setTargetRoomVerbose(r);
                 break;
             }
         }
@@ -104,7 +94,19 @@ function App() {
 
             {/* Middle Section */}
             <div className="middle-section">
-                <div className="left-control"><LeftControl floors={floors}/></div>
+                {/*<div className="left-control"><LeftControl floors={[*/}
+                {/*    <FloorMap key={"1F"} name={"1F"} grid={grid1} targetRoom={targetRoom} start={start1}*/}
+                {/*              updateSelectedStair={setStartPointVerbose}/>,*/}
+                {/*    <FloorMap key={"2F"} name={"2F"} grid={grid2} targetRoom={targetRoom} start={startPoint}*/}
+                {/*              updateSelectedStair={setStartPointVerbose}/>,*/}
+                {/*    <FloorMap key={"3F"} name={"3F"} grid={grid3} targetRoom={targetRoom} start={startPoint}*/}
+                {/*              updateSelectedStair={setStartPointVerbose}/>,*/}
+                {/*]}/></div>*/}
+                <div className="left-control"><LeftControl floors={[
+                    {name: "1F", grid: grid1, startPoint: start1},
+                    {name: "2F", grid: grid2, startPoint: startPoint},
+                    {name: "3F", grid: grid3, startPoint: startPoint},
+                ]} targetRoom={targetRoom} updateSelectedStair={setStartPointVerbose}/></div>
                 <div className="right-control"><RoomList rooms={rooms}/></div>
             </div>
 

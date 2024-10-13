@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import FloorMap from "./FloorMap";
 
-const LeftControl = ({floors}) => {
-    // floors: [{name: "1F", floor: FloorMap}]
+const LeftControl = ({floors, updateSelectedStair, targetRoom}) => {
+    // floors: {name: "1F", grid: grid1, startPoint: start1},
 
-    const [selectedFloor, setSelectedFloor] = useState(null);
+    const [selectedFloor, setSelectedFloor] = useState(floors[0]);
 
     const handleButtonClick = (floor) => {
+        console.log(floor);
         setSelectedFloor(floor);
     };
 
@@ -24,11 +26,8 @@ const LeftControl = ({floors}) => {
             </div>
 
             <div style={styles.mapContainer}>
-                {selectedFloor ? (
-                    selectedFloor.floor
-                ) : (
-                    <p>Please select an image</p>
-                )}
+                <FloorMap name={selectedFloor.name} grid={selectedFloor.grid} updateSelectedStair={updateSelectedStair}
+                          start={selectedFloor.startPoint} targetRoom={targetRoom} refresh={selectedFloor}/>
             </div>
         </div>
     );
