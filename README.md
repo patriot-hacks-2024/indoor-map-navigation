@@ -19,8 +19,9 @@ Room Scheduling: Admins can manage room availability and activities.
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) : Web Speech API for voice input  
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) : Canvas for real-time route visualization  
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) : Styling and layout  
-![Dijkstra Algorithm](https://img.shields.io/badge/Algorithm-Dijkstra-blue?style=for-the-badge) : For pathfinding and route optimization  
 ![CSV](https://img.shields.io/badge/CSV-FF9900?style=for-the-badge&logo=csv&logoColor=white) : Building structure data  
+![Dijkstra Algorithm](https://img.shields.io/badge/Algorithm-Dijkstra-blue?style=for-the-badge) : For pathfinding and route optimization  
+
 
 
 ## What's Next
