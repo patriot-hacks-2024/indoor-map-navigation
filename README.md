@@ -8,10 +8,10 @@ InFuse is an indoor navigation system designed to guide students, faculty, and v
 
 ## Core Features
 
-Voice-Activated Navigation: Users can find rooms using voice commands.
-Shortest Path Calculation: The system computes the most efficient route inside the building.
-Real-Time Map Visualization: Displays the calculated path and building layout, with automatic floor transitions.
-Room Scheduling: Admins can manage room availability and activities.
+Voice-Activated Navigation: Users can find rooms using voice commands.  
+Shortest Path Calculation: The system computes the most efficient route inside the building.  
+Real-Time Map Visualization: Displays the calculated path and building layout, with automatic floor transitions.  
+Room Scheduling: Admins can manage room availability and activities.  
 
 ## Tech Stack
 
