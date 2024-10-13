@@ -18,7 +18,7 @@ Room Scheduling: Admins can manage room availability and activities.
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white) : ChatGPT API to translate human-language requests into code  
 ![Dijkstra Algorithm](https://img.shields.io/badge/Algorithm-Dijkstra-blue?style=for-the-badge) : For pathfinding and route optimization  
 ![CSV](https://img.shields.io/badge/CSV-FF9900?style=for-the-badge&logo=csv&logoColor=white) : Building structure data  
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) : Canvas for real-time route visualization
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) : Canvas for real-time route visualization  
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black) : Front-end design  
 
 ## What's Next
