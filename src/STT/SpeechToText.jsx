@@ -66,7 +66,7 @@ const styles = {
     },
     promptText: {
         fontSize: "24px",
-        color: "white",
+        color: "#e5e5e5",
         marginBottom: "20px",
         textAlign: "center",
     },
