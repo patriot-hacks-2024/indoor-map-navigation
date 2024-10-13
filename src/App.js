@@ -86,7 +86,7 @@ function App() {
         <div className={`app-container ${isAdminMode ? "admin-mode" : "user-mode"}`}>
             {/* Top 100px Control */}
             <div className="top-control">
-                <span>{isAdminMode ? "Fuse at Mason Square (Admin Mode)" : "Fuse at Mason Square"}</span>
+                <span>{isAdminMode ? "Fuse at Mason Square <br /> (Admin Mode)" : "Fuse at Mason Square"}</span>
                 <button className="toggle-button" onClick={toggleMode}>
                     {isAdminMode ? " " : "  "}
                 </button>
