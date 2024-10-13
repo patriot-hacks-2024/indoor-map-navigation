@@ -13,19 +13,13 @@ Room Scheduling: Admins can manage room availability and activities.
 
 ## Tech Stack
 
-[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3)](https://skillicons.dev)
-[![My Skills](https://skillicons.dev/icons?i=aws,gcp,azure,react,vue,flutter&perline=3)](https://skillicons.dev)
-[![My Skills](https://skillicons.dev/icons?i=java,kotlin,nodejs,figma&theme=light)](https://skillicons.dev)
-<img src="./icons/HTML.svg" width="48">
-<img src="./icons/JavaScript.svg" width="48">
-
-Azure (Speech SDK for voice recognition)
-JavaScript (Web Speech API for voice input)
-ChatGPT API (OpenAI) (Translate human-language requests into code)
-Dijkstra Algorithm (For pathfinding and route optimization)
-CSV (Building structure data)
-HTML5 Canvas (Real-time route visualization)
-React (Front-end design)
+**Azure** (Speech SDK for voice recognition)
+**JavaScript** (Web Speech API for voice input)
+**ChatGPT API (OpenAI)** (Translate human-language requests into code)
+**Dijkstra Algorithm** (For pathfinding and route optimization)
+**CSV** (Building structure data)
+**HTML5** Canvas (Real-time route visualization)
+**React** (Front-end design)
 
 ## What's Next
 
