@@ -36,27 +36,17 @@ const LeftControl = ({floors, updateSelectedStair, targetRoom}) => {
 // 样式
 const styles = {
     leftControlContainer: {
-        width: "70%",
-        backgroundColor: "#f0f0f0",
-        padding: "20px",
-        borderRadius: "8px",
+        background: "red",
     },
     buttonGroup: {
-        marginBottom: "20px",
+        padding: 0,
     },
     button: {
         marginRight: "10px",
         padding: "10px 20px",
         fontSize: "16px",
         cursor: "pointer",
-    },
-    mapContainer: {
-        marginTop: "20px",
-    },
-    map: {
-        maxWidth: "100%",
-        height: "auto",
-        borderRadius: "8px",
+        background: "transparent",
     },
 };
 

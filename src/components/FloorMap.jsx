@@ -24,7 +24,7 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStair, refresh})
 
     return (
         <canvas ref={canvasRef} width="600" height="300"
-                style={{border: '1px solid black', marginBottom: '10px'}}></canvas>
+                style={{marginBottom: '10px'}}></canvas>
     )
 };
 
@@ -33,7 +33,7 @@ const drawGrid = (grid, ctx) => {
     const rows = 50;
     const cols = 100;
 
-    const cellSize = 5; // 每个格子的大小
+    const cellSize = 7; // 每个格子的大小
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             if (grid[i][j] === 8) {

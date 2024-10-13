@@ -22,7 +22,7 @@ html, body, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: 54px;
   font-weight: bold;   /* Bold text */
   color: white;        /* White text color */
   font-family: 'Montserrat', Arial, sans-serif;  /* Clean, modern font */
@@ -123,11 +123,14 @@ html, body, #root {
 /* Bottom control (300px height) */
 .bottom-control {
   height: 150px;
-  /* background-color: lightcoral; */
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  font-size: 54px;
+  font-weight: bold;   /* Bold text */
+  color: rgba(255, 255, 255, 0.373);        
+  font-family: 'Montserrat', Arial, sans-serif;  /* Clean, modern font */
 }
 
 /* SiriComponent will take up all available space */
@@ -147,20 +150,24 @@ html, body, #root {
 /* Left control (70% width) */
 .left-control {
   width: 70%;
-  /* background-color: lightgreen; */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: auto;/* Add scrolling if needed */
+  background-color: transparent;
 }
 
 /* Right control (30% width) */
 .right-control {
   width: 30%;
-  /* background-color: lightyellow; */
   display: flex;
   overflow: hidden;
-  flex-direction: column; /* Stack children vertically */
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  color: #2a4d14;
+  background-color: 'transparent';
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .right-control > div {
@@ -169,11 +176,3 @@ html, body, #root {
   padding: 10px;
 }
 
-/* Different background colors for modes */
-.admin-mode .top-control {
-  /* background-color: lightcyan; */
-}
-
-.user-mode .top-control {
-  /* background-color: lightblue; */
-}
