@@ -69,7 +69,7 @@ function App() {
             <div className="top-control">
                 <span>{isAdminMode ? "Fuse at Mason Square (Admin Mode)" : "Fuse at Mason Square"}</span>
                 <button className="toggle-button" onClick={toggleMode}>
-                    {isAdminMode ? "Switch to User" : "Switch to Admin"}
+                    {isAdminMode ? " " : "  "}
                 </button>
             </div>
 
