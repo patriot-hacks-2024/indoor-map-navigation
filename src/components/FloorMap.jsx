@@ -4,7 +4,8 @@ const FloorMap = ({grid, stairs, start, dest, navToOtherFloors, updateSelectedSt
     const canvasRef = useRef(null);
 
     useEffect(() => {
-        let ctx = canvasRef.current.getContext('2d')
+        let ctx = canvasRef.current.getContext('2d');
+        ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         drawGrid(grid, ctx);
         if (navToOtherFloors !== null) {
             let goals = navToOtherFloors ? stairs : dest;
