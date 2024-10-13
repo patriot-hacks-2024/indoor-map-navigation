@@ -1,12 +1,14 @@
 import {useEffect, useRef} from "react";
 import {stair} from "../data/mapData";
 
-const FloorMap = ({name, grid, start, targetRoom, updateSelectedStair, refresh}) => {
+const FloorMap = ({name, grid, start, targetRoom, updateSelectedStairCallback, refresh, changeFloorCallback}) => {
     const canvasRef = useRef(null);
     const stairs = stair;
 
+    let shouldCallback = true;
+
     useEffect(() => {
-        console.log("drawing")
+        console.log("drawing");
         let ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         drawGrid(grid, ctx);
@@ -15,9 +17,16 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStair, refresh})
             console.log("targetRoom", targetRoom.entrance)
             let goals = navToOtherFloors ? stairs : [targetRoom.entrance];
             let path = dijkstra(grid, start, goals);
-            drawPath(path, ctx);
-            if (navToOtherFloors) {
-                updateSelectedStair(nextStart);
+            if (path.length > 1) {
+                drawPath(path, ctx, () => {
+                    if (navToOtherFloors && shouldCallback) {
+                        shouldCallback = false;
+                        setTimeout(() => {
+                            updateSelectedStairCallback(nextStart);
+                            changeFloorCallback(targetRoom.floor);
+                        }, 1200);
+                    }
+                });
             }
         }
     }, [targetRoom, refresh]);
@@ -62,7 +71,10 @@ const drawGrid = (grid, ctx) => {
 let nextStart = []
 
 const dijkstra = (grid, start, goal) => {
-    start=[start[0], start[1]]
+    if (start === null) {
+        return [];
+    }
+    start = [start[0], start[1]]
     console.log("dijk", start, goal);
 
     if (goal.length === 0) {
@@ -106,7 +118,7 @@ const dijkstra = (grid, start, goal) => {
     return []; // 找不到路径
 };
 
-const drawPath = (path, ctx) => {
+const drawPath = (path, ctx, callback) => {
     console.log(path);
 
     let index = 0;
@@ -120,6 +132,8 @@ const drawPath = (path, ctx) => {
             ctx.fillRect(y * 5 + 1, x * 5 + 1, 3, 3); // 绘制路径
             index++;
             setTimeout(step, 21); // 每500毫秒绘制下一个点
+        } else {
+            callback();
         }
     };
 

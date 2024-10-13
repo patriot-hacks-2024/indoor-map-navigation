@@ -106,7 +106,7 @@ function App() {
                     {name: "1F", grid: grid1, startPoint: start1},
                     {name: "2F", grid: grid2, startPoint: startPoint},
                     {name: "3F", grid: grid3, startPoint: startPoint},
-                ]} targetRoom={targetRoom} updateSelectedStair={setStartPointVerbose}/></div>
+                ]} targetRoom={targetRoom} updateSelectedStairCallback={setStartPointVerbose}/></div>
                 <div className="right-control"><RoomList rooms={rooms}/></div>
             </div>
 
