@@ -23,7 +23,7 @@ function App() {
     const updateOccupation = (name, newOccupation) => {
         const updatedRooms = rooms.map((room, i) =>
             room.name === name
-                ? new Room(name, newOccupation || room.occupation, room.entrance)
+                ? new Room(name, newOccupation || room.occupation, room.floor, room.entrance)
                 : room
         );
         setRooms(updatedRooms); // Update state with the modified array
