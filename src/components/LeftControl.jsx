@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import FloorMap from "./FloorMap";
+import {start1} from "../data/mapData";
 
-const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
+const LeftControl = ({floors, updateSelectedStairCallback, selectedStair, targetRoom}) => {
     // floors: {name: "1F", grid: grid1, startPoint: start1},
 
     const [selectedFloor, setSelectedFloor] = useState(floors[0]);
@@ -11,8 +12,8 @@ const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
         if (selectedFloor.name === name) return;
         console.log("changeToFloor", name);
         for (let floor of floors) {
-            if(floor.name === name) {
-                setSelectedFloor(floor);
+            if (floor.name === name) {
+                setSelectedFloor({...floor});
                 break;
             }
         }
@@ -37,7 +38,10 @@ const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
                         onClick={() => {
                             handleButtonClick(floor);
                         }}
-                        style={styles.button}
+                        style={{
+                            ...styles.button,
+                            backgroundColor: floor.name === selectedFloor.name ? "lightblue" : "transparent"
+                        }}
                     >
                         {floor.name}
                     </button>
@@ -45,8 +49,10 @@ const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
             </div>
 
             <div style={styles.mapContainer}>
-                <FloorMap name={selectedFloor.name} grid={selectedFloor.grid} updateSelectedStairCallback={updateSelectedStairCallback}
-                          start={selectedFloor.startPoint} targetRoom={targetRoom} refresh={selectedFloor}
+                <FloorMap name={selectedFloor.name} grid={selectedFloor.grid}
+                          updateSelectedStairCallback={updateSelectedStairCallback}
+                          start={selectedFloor.name === "1F" ? start1 : selectedStair} targetRoom={targetRoom}
+                          refresh={selectedFloor}
                           changeFloorCallback={changeToFloor}/>
             </div>
         </div>
@@ -55,8 +61,7 @@ const LeftControl = ({floors, updateSelectedStairCallback, targetRoom}) => {
 
 // 样式
 const styles = {
-    leftControlContainer: {
-    },
+    leftControlContainer: {},
     buttonGroup: {
         padding: 0,
     },
@@ -65,7 +70,6 @@ const styles = {
         padding: "10px 20px",
         fontSize: "16px",
         cursor: "pointer",
-        background: "transparent",
     },
 };
 

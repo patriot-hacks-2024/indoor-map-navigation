@@ -4,7 +4,6 @@ import {useState} from "react";
 import Room from "./types/Room";
 import RoomList from "./components/RoomList";
 import {textToAdminCommand, textToUserCommand} from "./chat/textToCommand";
-import FloorMap from "./components/FloorMap";
 import {grid1, grid2, grid3, start1} from "./data/mapData";
 import LeftControl from "./components/LeftControl";
 
@@ -106,7 +105,8 @@ function App() {
                     {name: "1F", grid: grid1, startPoint: start1},
                     {name: "2F", grid: grid2, startPoint: startPoint},
                     {name: "3F", grid: grid3, startPoint: startPoint},
-                ]} targetRoom={targetRoom} updateSelectedStairCallback={setStartPointVerbose}/></div>
+                ]} targetRoom={targetRoom} updateSelectedStairCallback={setStartPointVerbose}
+                                                           selectedStair={startPoint}/></div>
                 <div className="right-control"><RoomList rooms={rooms}/></div>
             </div>
 

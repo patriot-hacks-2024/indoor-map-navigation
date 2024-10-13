@@ -8,7 +8,7 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStairCallback, r
     let shouldCallback = true;
 
     useEffect(() => {
-        console.log("drawing");
+        console.log("drawing " + name);
         let ctx = canvasRef.current.getContext('2d');
         ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
         drawGrid(grid, ctx);
@@ -16,7 +16,9 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStairCallback, r
             let navToOtherFloors = targetRoom.floor !== name;
             console.log("targetRoom", targetRoom.entrance)
             let goals = navToOtherFloors ? stairs : [targetRoom.entrance];
+            console.log(name, "goal", start, goals)
             let path = dijkstra(grid, start, goals);
+            console.log(name, "dijk", path.length)
             if (path.length > 1) {
                 drawPath(path, ctx, () => {
                     if (navToOtherFloors && shouldCallback) {
