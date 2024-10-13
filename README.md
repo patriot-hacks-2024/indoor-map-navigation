@@ -15,7 +15,7 @@ Room Scheduling: Admins can manage room availability and activities.
 
 Azure (Speech SDK for voice recognition)
 JavaScript (Web Speech API for voice input)
-ChatGPT API (Translate human-language requests into code)
+ChatGPT API (OpenAI) (Translate human-language requests into code)
 Dijkstra Algorithm (For pathfinding and route optimization)
 CSV (Building structure data)
 HTML5 Canvas (Real-time route visualization)
