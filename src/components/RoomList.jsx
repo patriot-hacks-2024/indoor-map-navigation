@@ -8,8 +8,8 @@ const RoomList = ({ rooms }) => {
                 {rooms.map((room, index) => (
                     <li key={index} style={styles.roomItem}>
                         <h3>{room.name}</h3>
+                        <p>Floor: {room.floor}</p>
                         <p>Occupation: {room.occupation}</p>
-                        <p>Entrance Coordinates: [{room.entrance[0]}, {room.entrance[1]}]</p>
                     </li>
                 ))}
             </ul>

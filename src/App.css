@@ -15,6 +15,8 @@ html, body, #root {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-top: 20px;
+  padding-right: 20px;
 }
 .top-control {
   position: relative;  /* Positioned for the button alignment */
@@ -28,7 +30,7 @@ html, body, #root {
   font-family: 'Montserrat', Arial, sans-serif;  /* Clean, modern font */
   
   /* Optional enhancement: Add a slight text-shadow */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0.2, 0.2, 0.2, 0.5);
   
   /* Optional enhancement: Add smooth transition */
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -122,21 +124,16 @@ html, body, #root {
 
 /* Bottom control (300px height) */
 .bottom-control {
-  height: 150px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  font-size: 54px;
-  font-weight: bold;   /* Bold text */
-  color: rgba(255, 255, 255, 0.373);        
-  font-family: 'Montserrat', Arial, sans-serif;  /* Clean, modern font */
 }
 
 /* SiriComponent will take up all available space */
 .bottom-control > div {
   width: 100%;
-  height: 130px;
+  height: 200px;
 }
 
 /* Middle section to take up remaining space */

@@ -16,7 +16,7 @@ function App() {
 
     // Initialize state with an array of Room objects
     const [rooms, setRooms] = useState([
-        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", '1F', [32, 13]),
+        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", '1F', [40, 76]),
         new Room("Classroom 201", "A software engineering class", '2F', [42, 10]),
         new Room("Ballroom 304", "Christmas Ball", '3F', [17, 80]),
     ]);
