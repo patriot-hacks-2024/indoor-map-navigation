@@ -43,9 +43,13 @@ const SpeechToText = ({onResultCallback}) => {
             <button
                 onMouseDown={startListening}
                 onMouseUp={stopListening}
-                style={styles.micButton}
+                style={{
+                    ...styles.micButton,
+                    backgroundImage: isListening
+                        ? "url(\"./recordButton_on.png\")" // Image when listening
+                        : "url(\"./recordButton_off.png\")" // Image when not listening
+                }}
             >
-                {isListening ? "Listening..." : "🎤"}
             </button>
         </div>
     );
@@ -62,6 +66,7 @@ const styles = {
     },
     promptText: {
         fontSize: "24px",
+        color: "white",
         marginBottom: "20px",
         textAlign: "center",
     },
@@ -69,7 +74,6 @@ const styles = {
         width: "100px",
         height: "100px",
         borderRadius: "50%",
-        backgroundColor: "#4CAF50",
         border: "none",
         color: "white",
         fontSize: "24px",
@@ -78,6 +82,8 @@ const styles = {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor: "transparent",
+        backgroundSize: "cover"
     },
 };
 
