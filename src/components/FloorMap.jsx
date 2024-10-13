@@ -12,7 +12,8 @@ const FloorMap = ({name, grid, start, targetRoom, updateSelectedStair, refresh})
         drawGrid(grid, ctx);
         if (targetRoom !== null) {
             let navToOtherFloors = targetRoom.floor !== name;
-            let goals = navToOtherFloors ? stairs : targetRoom.entrance;
+            console.log("targetRoom", targetRoom.entrance)
+            let goals = navToOtherFloors ? stairs : [targetRoom.entrance];
             let path = dijkstra(grid, start, goals);
             drawPath(path, ctx);
             if (navToOtherFloors) {
@@ -62,9 +63,9 @@ let nextStart = []
 
 const dijkstra = (grid, start, goal) => {
     start=[start[0], start[1]]
-    console.log("dijk", start);
+    console.log("dijk", start, goal);
 
-    if (goal === null || goal.length === 0) {
+    if (goal.length === 0) {
         return [];
     }
 
