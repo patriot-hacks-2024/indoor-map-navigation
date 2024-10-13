@@ -4,7 +4,7 @@ import SpeechToText from "./STT/SpeechToText";
 import {useState} from "react";
 import Room from "./types/Room";
 import RoomList from "./components/RoomList";
-import textToUserCommand from "./chat/textToUserCommand";
+import {textToUserCommand, textToAdminCommand} from "./chat/textToCommand";
 
 function App() {
     const [isAdminMode, setIsAdminMode] = useState(false);
@@ -31,7 +31,37 @@ function App() {
 
     const userNavigateToRoom = async (userMessage) => {
         let room = await textToUserCommand(userMessage, rooms);
-        console.log("Navigate to room: " + room);
+        let entrance = [-1, -1];
+        for (let r of rooms) {
+            if (r.name === room) {
+                entrance = r.entrance;
+            }
+        }
+        console.log("Navigate to room: " + room + ", entrance is at " + entrance);
+    }
+
+    const adminUpdateRoom = async (userMessage) => {
+        let gpt = await textToAdminCommand(userMessage, rooms);
+        if(!gpt)
+        {
+            console.error("Incorrect chatgpt response: " + gpt);
+            return;
+        }
+        let result = gpt.split('%');
+        if (result.length < 2) {
+            console.error("Incorrect chatgpt response: " + gpt);
+            return;
+        }
+        let room = result[0];
+        let occu = result[1];
+        let entrance = [-1, -1];
+        for (let r of rooms) {
+            if (r.name === room) {
+                entrance = r.entrance;
+            }
+        }
+        console.log("Update to room: " + room + ", new occupation: " + occu);
+        updateOccupation(room, occu);
     }
 
     return (
@@ -47,11 +77,12 @@ function App() {
             {/* Middle Section */}
             <div className="middle-section">
                 <div className="left-control">Map</div>
-                <div className="right-control"><RoomList rooms={rooms} /> </div>
+                <div className="right-control"><RoomList rooms={rooms}/></div>
             </div>
 
             {/* Bottom 300px Control */}
-            <div className="bottom-control"><SpeechToText onResultCallback={userNavigateToRoom}/></div>
+            <div className="bottom-control"><SpeechToText
+                onResultCallback={isAdminMode ? adminUpdateRoom : userNavigateToRoom}/></div>
         </div>
     );
 }

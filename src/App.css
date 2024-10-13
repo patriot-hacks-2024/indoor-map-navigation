@@ -44,13 +44,13 @@ html, body, #root {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px; /* 为SiriComponent增加一点内边距 */
+  padding: 10px;
 }
 
 /* SiriComponent will take up all available space */
 .bottom-control > div {
   width: 100%;
-  height: 100%;
+  height: 130px;
 }
 
 /* Middle section to take up remaining space */
