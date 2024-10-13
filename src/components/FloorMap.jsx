@@ -36,19 +36,19 @@ const drawGrid = (grid, ctx) => {
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
             if (grid[i][j] === 8) {
-                ctx.fillStyle = 'black'
+                ctx.fillStyle = '#39393A'
             } else if (grid[i][j] === 7) {
-                ctx.fillStyle = 'blue'
+                ctx.fillStyle = '#2274A5'
             } else if (grid[i][j] === 6) {
-                ctx.fillStyle = 'green'
+                ctx.fillStyle = '#32936F'
             } else if (grid[i][j] === 5) {
-                ctx.fillStyle = 'orange'
+                ctx.fillStyle = '#E83F6F'
             } else if (grid[i][j] === 2) {
                 ctx.fillStyle = 'gray'
             } else if (grid[i][j] === 1) {
-                ctx.fillStyle = 'yellow'
+                ctx.fillStyle = '#FFBF00'
             } else if (grid[i][j] === 0) {
-                ctx.fillStyle = 'white'
+                ctx.fillStyle = '#FFFFFF'
             } else {
                 continue
             }
