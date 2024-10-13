@@ -1,7 +1,8 @@
 class Room {
-    constructor(name, occupation, entrance) {
+    constructor(name, occupation, floor, entrance) {
         this.name = name; // string
         this.occupation = occupation; // string
+        this.floor = floor; // floor #
         this.entrance = entrance; // [int, int] array representing tuple
     }
 }

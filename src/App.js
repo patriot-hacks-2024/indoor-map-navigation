@@ -15,8 +15,8 @@ function App() {
 
     // Initialize state with an array of Room objects
     const [rooms, setRooms] = useState([
-        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", [1, 2]),
-        new Room("Classroom 101", "A software engineering class", [3, 4]),
+        new Room("Conference Room", "A meeting about a hackathon event: PatriotHack 2024", 1, [1, 2]),
+        new Room("Classroom 101", "A software engineering class", 2, [3, 4]),
     ]);
 
     // Function to edit a specific room
@@ -42,8 +42,7 @@ function App() {
 
     const adminUpdateRoom = async (userMessage) => {
         let gpt = await textToAdminCommand(userMessage, rooms);
-        if(!gpt)
-        {
+        if (!gpt) {
             console.error("Incorrect chatgpt response: " + gpt);
             return;
         }
