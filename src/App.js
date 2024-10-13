@@ -5,7 +5,7 @@ import Room from "./types/Room";
 import RoomList from "./components/RoomList";
 import {textToAdminCommand, textToUserCommand} from "./chat/textToCommand";
 import FloorMap from "./components/FloorMap";
-import {grid1, grid2, grid3, stair1, stair2, stair3, start1} from "./data/mapData";
+import {grid1, grid2, grid3, stair, start1} from "./data/mapData";
 import LeftControl from "./components/LeftControl";
 
 function App() {
@@ -28,19 +28,19 @@ function App() {
     const floors = [
         {
             name: "1F",
-            floor: <FloorMap grid={grid1} dest={targetRoom?.entrance ?? null} stairs={stair1}
+            floor: <FloorMap grid={grid1} dest={targetRoom?.entrance ?? null} stairs={stair}
                              navToOtherFloors={targetRoom?.floor === "1F" ?? null} start={start1}
                              updateSelectedStair={setStartPoint}/>
         },
         {
             name: "2F",
-            floor: <FloorMap grid={grid2} dest={targetRoom?.entrance ?? null} stairs={stair2}
+            floor: <FloorMap grid={grid2} dest={targetRoom?.entrance ?? null} stairs={stair}
                              navToOtherFloors={targetRoom?.floor === "2F" ?? null} start={startPoint}
                              updateSelectedStair={setStartPoint}/>
         },
         {
             name: "3F",
-            floor: <FloorMap grid={grid3} dest={targetRoom?.entrance ?? null} stairs={stair3}
+            floor: <FloorMap grid={grid3} dest={targetRoom?.entrance ?? null} stairs={stair}
                              navToOtherFloors={targetRoom?.floor === "3F" ?? null} start={startPoint}
                              updateSelectedStair={setStartPoint}/>
         },
