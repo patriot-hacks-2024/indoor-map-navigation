@@ -51,6 +51,7 @@ function App() {
         for (let r of rooms) {
             if (r.name === room) {
                 entrance = r.entrance;
+                setStartPointVerbose(null);
                 setTargetRoomVerbose(r);
                 break;
             }
